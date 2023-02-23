@@ -80,5 +80,14 @@ namespace ProductReviewManagement
             var result = list.Skip(5).ToList();
             DisplayeProductsReview(result);
         }
+        public static void RetrieveProductIDWithRating(List<ProductReviews> list)
+        {
+            Console.WriteLine("Only Retrieving ProductID with Rating");
+            var result = list.Select(product => new { ProductID = product.ProductID, Rating = product.Rating }).ToList();
+            foreach (var item in result)
+            {
+                Console.WriteLine("ProductID: " + item.ProductID + " Rating: " + item.Rating);
+            }
+        }
     }
 }
