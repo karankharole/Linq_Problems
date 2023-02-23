@@ -48,7 +48,7 @@ namespace ProductReviewManagement
         }
         public static void ProductsRatingGreaterThan3(List<ProductReviews> list)
         {
-            //Query Syntax
+
             Console.WriteLine("Retrieving products based on rating greater than 3 and having ProductID as 1/4/9");
             var res = list.Where(p => p.Rating > 3 && (p.ProductID == 1 || p.ProductID == 4 || p.ProductID == 9)).ToList();
             DisplayeProductsReview(res);
@@ -63,6 +63,15 @@ namespace ProductReviewManagement
             foreach (var item in result)
             {
                 Console.WriteLine("ProductID: " + item.Id + " Count: " + item.Count);
+            }
+        }
+        public static void RetrieveProductIDWithReview(List<ProductReviews> list)
+        {
+            Console.WriteLine("Only Retrieving ProductID with Review");
+            var result = list.Select(product => new { ProductID = product.ProductID, Review = product.Review }).ToList();
+            foreach (var item in result)
+            {
+                Console.WriteLine("ProductID: " + item.ProductID + " Review: " + item.Review);
             }
         }
     }
