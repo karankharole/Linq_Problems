@@ -10,6 +10,8 @@ namespace ProductReviewManagement
 {
     public class Management
     {
+
+
         public static List<ProductReviews> AddProductsReview()
         {
             List<ProductReviews> list = new List<ProductReviews>()
@@ -35,6 +37,14 @@ namespace ProductReviewManagement
             {
                 Console.WriteLine(item);
             }
+        }
+        public static void Top3HighRatedProduct(List<ProductReviews> list)
+        {
+            Console.WriteLine("Retrieving Top 3 products based on rating");
+            //Query Syntax
+            var sortedProduct = from product in list orderby product.Rating descending select product;
+            var top3 = sortedProduct.Take(3).ToList();
+            DisplayeProductsReview(top3);
         }
     }
 }
